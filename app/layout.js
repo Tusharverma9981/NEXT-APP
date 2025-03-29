@@ -1,11 +1,15 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/ui/Header";  // ✅ Correct import
+
+
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
+4
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -22,7 +26,15 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Header/> 
+        <main className=" min-h-screen ">
         {children}
+        </main>
+        <footer className=" bg-muted/50 py-12">
+          <div className="containter mx-auto px-4 text-center " >
+            <p>© 2025 Elevate.Ai. All rights reserved.</p>
+          </div>
+        </footer>
       </body>
     </html>
   );
