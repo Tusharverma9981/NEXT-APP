@@ -3,7 +3,7 @@ import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@cl
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from './button'
-import { LayoutDashboard } from 'lucide-react'
+import { FileText, GraduationCap, LayoutDashboard, PenBox, StarsIcon } from 'lucide-react'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from './dropdown-menu'
 
 function Header() {
@@ -17,34 +17,53 @@ function Header() {
           width={200}
           height={60}
          /> */}
-          ELEVATE.AI
+        <span className='text-bold font-extrabold'> ELEVATE.AI</span>
          
         </Link>
-        <div>
-          <Link href="/dashboard">
-          <Button>
+        
+           
+        <div className='flex items-center space-x-4 md:space-x-4'>
+        <SignedOut>
+              <SignInButton />
+              <SignUpButton />
+            </SignedOut>
+        <SignedIn>
+          <Link href={"/dashboard"} >
+          <Button >
             <LayoutDashboard className=" h-4 w-4" />
             <span className="hidden md:block">Industry Insights</span>
           </Button>
           </Link>
-          <SignedOut>
-              <SignInButton />
-              <SignUpButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
+        
+           
             <DropdownMenu>
-  <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+  <DropdownMenuTrigger>
+  <Button>
+            <StarsIcon className=" h-4 w-4" />
+            <span className="hidden md:block">Growth Tools</span>
+          </Button>
+  </DropdownMenuTrigger>
   <DropdownMenuContent>
-    <DropdownMenuLabel>My Account</DropdownMenuLabel>
-    <DropdownMenuSeparator />
-    <DropdownMenuItem>Profile</DropdownMenuItem>
-    <DropdownMenuItem>Billing</DropdownMenuItem>
-    <DropdownMenuItem>Team</DropdownMenuItem>
-    <DropdownMenuItem>Subscription</DropdownMenuItem>
+    <DropdownMenuItem>
+      <Link href={"/resume"} className='flex items-center gap-2'>
+      <FileText className=" h-4 w-4" />
+      <span>Resume Builder</span>
+      </Link>
+    </DropdownMenuItem>
+    <DropdownMenuItem> <Link href={"/ai-cover-latter"} className='flex items-center gap-2'>
+      <PenBox className=" h-4 w-4" />
+      <span>Cover Latter</span>
+      </Link></DropdownMenuItem>
+    <DropdownMenuItem> <Link href={"/interview"} className='flex items-center gap-2'>
+      <GraduationCap className=" h-4 w-4" />
+      <span>Interview Prep</span>
+      </Link></DropdownMenuItem>
+    
   </DropdownMenuContent>
 </DropdownMenu>
+
+              <UserButton />
+            </SignedIn>
         </div>
        
       </nav>
